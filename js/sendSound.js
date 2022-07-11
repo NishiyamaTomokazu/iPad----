@@ -228,6 +228,9 @@ function getBinary(arrayData){
     return returnData;      //バイトデータをビットの配列に変換したデータを返す
 }
 
+//wait
+const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 /*******************************************
     引数のビットのデータを0/1に応じて、サウンドデータに変換する
     スタートビットを出力後、１バイト分のデータを出力する
@@ -235,13 +238,14 @@ function getBinary(arrayData){
 
     最後にできた配列をwebAudioの出力バッファに入れて、出力する
 *******************************************/
-function outputSoundData(binaryDataArray) {
+async function outputSoundData(binaryDataArray) {
 	var AudioContext = window.AudioContext || window.webkitAudioContext;
 	var audioCtx = new AudioContext();
 	var channels = 2;
 	audioCtx.sampleRate = 44100;
 	var frameCount = audioCtx.sampleRate * 20.0
 	var myArrayBuffer = audioCtx.createBuffer(2,frameCount,audioCtx.sampleRate);
+    console.log("押された！");
     //console.log(binaryDataArray);
     //let newArray = new Array();
     var newArray = myArrayBuffer.getChannelData(0);     //変換データを保存する配列
@@ -297,8 +301,10 @@ function outputSoundData(binaryDataArray) {
     source.connect(audioCtx.destination);           //出力先に接続する
     source.start();                                 //再生開始
 
+    await _sleep(1500);
     source.disconnect();
     audioCtx.close();
+    console.log("音終了");
 }
 
 
