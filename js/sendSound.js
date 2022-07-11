@@ -301,7 +301,7 @@ async function outputSoundData(binaryDataArray) {
     source.connect(audioCtx.destination);           //出力先に接続する
     source.start();                                 //再生開始
 
-    await _sleep(1500);
+    await _sleep(1000);
     source.disconnect();
     audioCtx.close();
     console.log("音終了");
