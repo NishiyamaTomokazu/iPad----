@@ -5,13 +5,13 @@
  * webAudioの初期化
  * ここは、そのままで
 **************************************/
-/*var AudioContext = window.AudioContext || window.webkitAudioContext;
+var AudioContext = window.AudioContext || window.webkitAudioContext;
 var audioCtx = new AudioContext();
 var channels = 2;
 audioCtx.sampleRate = 44100;
 var frameCount = audioCtx.sampleRate * 20.0
 var myArrayBuffer = audioCtx.createBuffer(2,frameCount,audioCtx.sampleRate);
-*/
+
 
 /*************************************
  * 
@@ -238,14 +238,14 @@ const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
     最後にできた配列をwebAudioの出力バッファに入れて、出力する
 *******************************************/
-async function outputSoundData(binaryDataArray) {
-	var AudioContext = window.AudioContext || window.webkitAudioContext;
+function outputSoundData(binaryDataArray) {
+	/*var AudioContext = window.AudioContext || window.webkitAudioContext;
 	var audioCtx = new AudioContext();
 	var channels = 2;
 	audioCtx.sampleRate = 44100;
 	var frameCount = audioCtx.sampleRate * 20.0
 	var myArrayBuffer = audioCtx.createBuffer(2,frameCount,audioCtx.sampleRate);
-    console.log("押された！");
+    console.log("押された！");*/
     //console.log(binaryDataArray);
     //let newArray = new Array();
     var newArray = myArrayBuffer.getChannelData(0);     //変換データを保存する配列
