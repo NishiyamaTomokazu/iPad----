@@ -238,7 +238,7 @@ const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
     最後にできた配列をwebAudioの出力バッファに入れて、出力する
 *******************************************/
-function outputSoundData(binaryDataArray) {
+async function outputSoundData(binaryDataArray) {
 	/*var AudioContext = window.AudioContext || window.webkitAudioContext;
 	var audioCtx = new AudioContext();
 	var channels = 2;
